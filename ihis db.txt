@@ -1,0 +1,51 @@
+show databases;
+use ihis;
+show tables;
+select * from app_plans;
+
+desc plan_category_master;
+
+insert into plan_category_master(category_id,category_name, created_date) 
+values(1,'Food Suppliment','2022-06-05');
+
+insert into plan_category_master(category_id,category_name, created_date) 
+values(2,'Child Care','2022-06-05');
+
+insert into plan_category_master(category_id,category_name, created_date) 
+values(3,'Health','2022-06-05');
+
+insert into plan_category_master(category_id,category_name, created_date) 
+values(4,'Education & Employment','2022-06-05');
+
+insert into plan_category_master(category_id,category_name, created_date) 
+values(5,'Qualified Health Plan','2022-06-05');
+
+select * from plan_category_master;
+
+select * from cw_accounts;
+
+select * from app_plans;
+
+desc citizen_apps;
+select * from citizen_apps;
+
+alter table citizen_apps modify state_name varchar(100);
+
+select * from citizen_plans;
+delete from citizen_plans where citizen_id=11;
+
+select * from citizen_income_dtls;
+
+desc graduation_years;
+
+insert into graduation_years(year_id, year) values(1,2010);
+insert into graduation_years(year_id,year) values(2,2015);
+insert into graduation_years(year_id,year) values(3,2017);
+
+
+desc citizen_child_dtls;
+
+select * from citizen_child_dtls;
+
+
+
