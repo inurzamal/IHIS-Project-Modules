@@ -20,7 +20,7 @@ public class CitizenEducationDtlsEntity {
 	@Column(name="GRADUATION_ID")
 	private Integer graduationId;
 	
-	@Column(name="CASE_NUM")
+	@Column(name="CASE_NUM", unique=true)
 	private Integer caseNum;
 	
 	@Column(name="HIGHEST_DEGREE")

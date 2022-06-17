@@ -20,7 +20,7 @@ public class CitizenIncomeDtlsEntity {
 	@Column(name="INCOME_ID")
 	private Integer incomeId;
 	
-	@Column(name="CASE_NUM")
+	@Column(name="CASE_NUM", unique=true)
 	private Integer caseNum;
 	
 	@Column(name="SALARY_INCOME")

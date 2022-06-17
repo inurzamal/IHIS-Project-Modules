@@ -85,8 +85,8 @@ public class CaseWorkerServiceImpl implements CaseWorkerService {
 		CaseWorkersAcctEntity entity = new CaseWorkersAcctEntity();
 		
 		BeanUtils.copyProperties(profile, entity);
-		
-			
+
+					
 		if(entity.getAcctId() == null) {
 			return "Can't update without acctId";
 		}		
@@ -115,8 +115,7 @@ public class CaseWorkerServiceImpl implements CaseWorkerService {
 		card.setApprovedCitizenCnt(approvedSize);
 		
 		card.setDeniedCitizenCnt(deniedSize);
-		
-		
+				
 		return card;
 	}
 

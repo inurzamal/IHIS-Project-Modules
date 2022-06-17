@@ -20,11 +20,11 @@ public class EligibilityDtlsEntity {
 	@Column(name="ELIG_ID")
 	private Integer eligId;
 	
-	@Column(name="CASE_NUM")
-	private String caseNum;
+	@Column(name="CASE_NUM", unique=true)
+	private Integer caseNum;
 	
 	@Column(name="PLAN_NAME")
-	private Integer planName;
+	private String planName;
 	
 	@Column(name="PLAN_STATUS")
 	private String planStatus;

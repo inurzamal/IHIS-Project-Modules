@@ -2,8 +2,8 @@ package com.nur.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.nur.entity.CorrespondenceTriggersEntity;
+import com.nur.entity.CoTriggerEntity;
 
-public interface CoTriggerRepository extends JpaRepository<CorrespondenceTriggersEntity, Integer> {
+public interface CoTriggerRepository extends JpaRepository<CoTriggerEntity, Integer> {
 
 }

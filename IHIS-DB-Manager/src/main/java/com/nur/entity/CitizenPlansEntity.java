@@ -20,7 +20,7 @@ public class CitizenPlansEntity {
 	@Column(name="CITIZEN_ID")
 	private Integer citizenId;
 	
-	@Column(name="CASE_NUM")
+	@Column(name="CASE_NUM", unique=true)
 	private Integer caseNum;
 	
 	@Column(name="PLAN_ID")

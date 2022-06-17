@@ -99,6 +99,7 @@ public class DcServiceImpl implements DcService {
 		childList.forEach(child->{
 			CitizenChildDtlsEntity entity = new CitizenChildDtlsEntity();
 			BeanUtils.copyProperties(child, entity);
+			entity.setCaseNum(childs.getCaseNum());
 			childRepo.save(entity);
 		});
 		
