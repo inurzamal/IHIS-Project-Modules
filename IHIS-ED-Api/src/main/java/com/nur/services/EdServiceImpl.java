@@ -25,6 +25,7 @@ import com.nur.repository.CitizenChildDtlsRepository;
 import com.nur.repository.CitizenEducationDtlsRepository;
 import com.nur.repository.CitizenIncomeDtlsRepository;
 import com.nur.repository.CitizenPlansRepository;
+import com.nur.repository.CoTriggerRepository;
 import com.nur.repository.EligibilityDtlsRepository;
 import com.nur.utils.KidsEligibilityUtils;
 
@@ -54,6 +55,9 @@ public class EdServiceImpl implements EdService{
 	
 	@Autowired
 	private EligibilityDtlsRepository eligRepo;
+	
+	@Autowired
+	private CoTriggerRepository triggerRepo;
 
 	@Override
 	public EligDtlsBinding checkEligibility(Integer caseNum) {
@@ -177,6 +181,7 @@ public class EdServiceImpl implements EdService{
 		triggerEntity.setCaseNum(binding.getCaseNum());
 		triggerEntity.setTrgStatus("Pending");
 		triggerEntity.setNotice(null);
+		triggerRepo.save(triggerEntity);
 		return "Saved into Co-Triggers table";
 		
 	}

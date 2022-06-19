@@ -1,7 +1,5 @@
 package com.nur.rest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +19,9 @@ public class PlanSelectionRestController {
 	private DcService service;
 	
 	@GetMapping("/planNames")
-	public ResponseEntity<List<String>> getPlaneNames(){
-		
-		Map<Integer,String> map = service.getPlanNames();		
-		List<String> names = new ArrayList<>(map.values());		
-		return new ResponseEntity<>(names, HttpStatus.OK);		
+	public ResponseEntity<Map<Integer,String>> getPlaneNames(){		
+		Map<Integer,String> map = service.getPlanNames();			
+		return new ResponseEntity<>(map, HttpStatus.OK);		
 	}
 	
 	@PostMapping("/savePlan")

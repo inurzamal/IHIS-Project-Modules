@@ -1,12 +1,12 @@
 package com.nur.entity;
 
-import java.sql.Blob;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -29,7 +29,8 @@ public class CoTriggerEntity {
 	private String trgStatus;
 	
 	@Column(name="NOTICE")
-	private Blob notice;
+	@Lob
+	private byte[] notice;
 	
 	@Column(name="CREATED_DATE")
 	private LocalDate createdDate;
