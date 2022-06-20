@@ -82,10 +82,9 @@ public class CaseWorkerServiceImpl implements CaseWorkerService {
 	@Override
 	public String updateCwProfile(Profile profile) {
 		
-		CaseWorkersAcctEntity entity = new CaseWorkersAcctEntity();
-		
+		CaseWorkersAcctEntity entity = workerRepo.findById(profile.getAcctId()).get();
+			
 		BeanUtils.copyProperties(profile, entity);
-
 					
 		if(entity.getAcctId() == null) {
 			return "Can't update without acctId";

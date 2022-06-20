@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +34,7 @@ import com.nur.utils.EmailUtils;
 @Service
 public class CoServiceImpl implements CoService {
 	
-	private static final String PDF_PATH="C:\\Users\\Nur\\Documents\\pdfs\\";
+	private static final String PDF_PATH="C:\\Users\\NIELITCC13\\Documents\\pdfs\\";
 
 	@Autowired
 	private CoTriggerRepository triggersRepo;
@@ -50,17 +54,21 @@ public class CoServiceImpl implements CoService {
 		Map<String, Integer> statusMap = new HashMap<>();
 		Integer success = 0;
 		Integer failure = 0;
-
+		
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
+		ExecutorCompletionService<Object> pool = new ExecutorCompletionService<>(executorService);
+		
 		List<CoTriggerEntity> pendingTrgs = triggersRepo.findByTrgStatus("Pending");
 
 		for (CoTriggerEntity triggersEntity : pendingTrgs) {
-			try {
-				processTrigger(triggersEntity);
-				success++;
-			} catch (IOException e) {
-				e.printStackTrace();
-				failure++;
-			}
+			
+			pool.submit(new Callable<Object>() {
+				@Override
+				public Object call() throws Exception {
+					processTrigger(triggersEntity);
+					return null;
+				}
+			});
 		}
 		
 		statusMap.put("Total Pending Triggers", pendingTrgs.size());
