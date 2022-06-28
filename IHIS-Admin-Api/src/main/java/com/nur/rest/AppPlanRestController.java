@@ -41,10 +41,10 @@ public class AppPlanRestController {
 	}
 	
 	@GetMapping("/plan/{pid}")
-	public ResponseEntity<AppPlanBinding> getPlan(@PathVariable int pid){
+	public ResponseEntity<?> getPlan(@PathVariable int pid){
 		AppPlanBinding plan = service.getPlan(pid);
 		if(plan == null) {
-			return new ResponseEntity<>(plan,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Plan is not present with the given ID",HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(plan,HttpStatus.OK);	
 	}
